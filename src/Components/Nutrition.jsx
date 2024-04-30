@@ -28,7 +28,7 @@ useEffect(()=> {
     const ingredientArr = ingredients.map(ingredient => {
       return `${ingredient.IngredientAmount} ${ingredient.MeasurementName} ${ingredient.IngredientName}`
     })
-  fetch(`https://api.edamam.com/api/nutrition-details?app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}`,{
+  fetch(`https://api.edamam.com/api/nutrition-details?app_id=2cc0824c&app_key=${process.env.REACT_APP_API_KEY}`,{
     method:"POST",
     headers: {
       "Content-Type": "application/json",
