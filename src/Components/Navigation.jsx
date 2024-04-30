@@ -91,8 +91,9 @@ const Navigation = ({setState,state}) => {
             <Toolbar disableGutters>
                 <IconButton color="inherit">
                 </IconButton>
-                <Typography variant="h6" style={{ flexGrow: "1" }} color="white" className="header">
+                <Typography variant="h6" style={{ flexGrow: "1" }} color="white" className="header"> <Link to="/">
                    Recipes for Me
+                   </Link>
                 </Typography>
         
              <Search>
