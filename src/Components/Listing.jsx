@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom'; 
+import Nutrition from './Nutrition';
 
 const Listing = ({ recipeList }) => {
     const { id } = useParams(); 
@@ -19,7 +20,7 @@ const Listing = ({ recipeList }) => {
     },
     [])
     
-    useEffect(()=> {
+  useEffect(()=> {
         fetch(`https://recipe-app-eta-seven.vercel.app/recipes/ingredients/${id}`)
         
         .then((response) =>response.json())
@@ -31,10 +32,6 @@ const Listing = ({ recipeList }) => {
     },
     [])
     
-
-    if (!listing) {
-        return <div>Listing not found</div>;
-    }
     if (!listing) {
         return <div>Listing not found</div>;
     }
@@ -46,7 +43,7 @@ const Listing = ({ recipeList }) => {
             <h2></h2>
             <h2>{listing.RecipeName}</h2>
             <b>{listing.RecipeDescription}</b>
-            <br></br>  
+            <Nutrition title={listing.RecipeName}></Nutrition>
             <ul>
                 {ingredients.map(ingredient => (
                     <li>{ingredient.IngredientAmount} {ingredient.MeasurementName} {ingredient.IngredientName}</li>
@@ -60,7 +57,6 @@ const Listing = ({ recipeList }) => {
             <br></br>
             <b>{listing.RecipeDietary}</b>
 
-            <br></br>
             <br></br>
        
         </Container>

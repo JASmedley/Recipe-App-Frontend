@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate , Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import cookie from "cookie";
 import Box from '@mui/material/Box';
 
 
 
-const Login = ({setState,state}) => {
+const Register = ({setState,state}) => {
   const navigate = useNavigate();
 
   const [error,setError] = useState('')
@@ -19,24 +19,25 @@ const Login = ({setState,state}) => {
     }));
   };
 
-  const login = (e) => {
-    console.log("Login button clicked");
+  const register = (e) => {
+    console.log("Register button clicked");
     e.preventDefault();
-    fetch('https://recipe-app-eta-seven.vercel.app/login',{
+    fetch('https://recipe-app-eta-seven.vercel.app/register',{
       method:"POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: state.username,
-        password: state.password
+        password: state.password,
+        name: state.name
       })
     })
       .then((response) =>{ 
         console.log(response,'this is the response')
-        if (!response.ok) {
-           throw new Error('Username or Password not found.')
-        }
+        // if (!response.ok) {
+        //    throw new Error('Username or Password not found.')
+        // }
         return response.json()
       })
 
@@ -60,7 +61,7 @@ const Login = ({setState,state}) => {
 
   return (
       <Box
-        component="form" onSubmit={login}
+        component="form" onSubmit={register}
         sx={{
           '& > :not(style)': { 
             m: "0 auto", 
@@ -72,14 +73,14 @@ const Login = ({setState,state}) => {
         noValidate
         autoComplete="off"
       >
-        <TextField required name="username" label="Username" type="text" variant="standard" onChange={handleTextChange} value={state.username} />
+        <TextField required name="username" label="Email" type="text" variant="standard" onChange={handleTextChange} value={state.username} />
         <TextField required name="password" label="Password" type="password" variant="standard" onChange={handleTextChange} value={state.password} />
-        <Button type="submit" variant="contained" color="primary">Login</Button>
-        <Button component={Link} to="/register" variant="contained" color="primary">Or, Register Now</Button>
+        <TextField required name="name" label="First Name" type="text" variant="standard" onChange={handleTextChange} value={state.name} />
+        <Button type="submit" variant="contained" color="primary">Register Now</Button>
         <div className="errorMessage">{error}</div>
 
       </Box>
   );
 };
 
-export default Login;
+export default Register;

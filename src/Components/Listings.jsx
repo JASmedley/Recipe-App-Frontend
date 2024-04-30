@@ -10,7 +10,6 @@ import {
 import { Link } from 'react-router-dom'
 import DeleteIcon from "@mui/icons-material/Delete"
 import cookie from 'cookie'
-import { useEffect,useState } from 'react'
 
 const checkAuth = () => {
     const cookies = cookie.parse(document.cookie)

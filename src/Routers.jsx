@@ -4,6 +4,7 @@ import cookie from 'cookie'
 import Login from './Components/Login'
 import Listings from './Components/Listings'
 import Listing from './Components/Listing'
+import Register from './Components/Register'
 
 function checkAuth() {
     const cookies = cookie.parse(document.cookie);
@@ -18,7 +19,7 @@ function checkAuth() {
       checkAuth() === true ? <Component {...rest}/> : <Navigate to="/login"/>
     )
    }
-   const Router = () => {
+   const Router = ({state,setState}) => {
   const [recipeList,initializeRecipeList] = useState([])
     useEffect(()=> {
         fetch("https://recipe-app-eta-seven.vercel.app/recipes")
@@ -33,7 +34,8 @@ function checkAuth() {
     []) 
     return (
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login state={state} setState={setState} />} />
+        <Route path="/register" element={<Register state={state} setState={setState}/>}/>
         <Route path="/" element={<Listings recipeList={recipeList}/>} />
         <Route path="/:id" element={<Listing recipeList={recipeList}/>} />
       </Routes>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import { AppBar, Toolbar, IconButton, 
   Typography
 } from '@mui/material'
@@ -8,6 +8,7 @@ import AddListing from '../Components/AddListing';
 import cookie from "cookie";
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import Login from './Login'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -55,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const checkAuth = () => {
   const cookies = cookie.parse(document.cookie)
-  return cookies["loggedIn"] ? true : false
+  return cookies["token"] ? true : false
 }
 
 const handleClearCookiesClick = () => {
@@ -77,7 +78,12 @@ const theme = createTheme({
     },
   });
 
-const Navigation = (props) => {
+const Navigation = ({setState,state}) => {
+  useEffect(()=> {
+
+    console.log('nav component render', state.loggedIn)
+
+  }, [state.loggedIn])
     return (
         <ThemeProvider theme={theme}>
 
