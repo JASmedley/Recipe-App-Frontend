@@ -39,7 +39,6 @@ const Listing = ({ recipeList }) => {
 
  return (
         <Container maxWidth="sm" className="listing-container">
-        <h4>Welcome, </h4>
             <h2></h2>
             <h2>{listing.RecipeName}</h2>
             <b>{listing.RecipeDescription}</b>

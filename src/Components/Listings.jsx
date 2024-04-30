@@ -28,13 +28,12 @@ if (recipeList.length == 0) {
 
     return (
         <Container maxWidth="lg" className="company-container">
-            <h4>Welcome </h4>
             <Table>
                 <TableHead>
                     <TableRow >
-                        <TableCell>Name</TableCell>
-                        <TableCell>Description</TableCell>
-                        <TableCell>Dietary</TableCell>
+                        <TableCell><b>Recipe Name</b></TableCell>
+                        <TableCell><b>Description</b></TableCell>
+                        <TableCell><b>Allergen Lables</b></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
