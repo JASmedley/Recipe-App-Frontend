@@ -8,11 +8,10 @@ import {
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'; 
-import AddIngredient from './AddIngredients';
 
 
 
-class AddListing extends Component {
+class AddIngredient extends Component {
   state = {
       open: false,
       RecipeName: '',
@@ -28,15 +27,7 @@ class AddListing extends Component {
       this.setState(newState)
   }
 
-  handleRecipeInfo = (e) =>{
-
-  }
-
   handleIngredients = (e) => {
-
-  }
-
-  handleInstructions = (e) => {
 
   }
 
@@ -71,7 +62,7 @@ class AddListing extends Component {
               <div style={{ textAlign: 'center' }}>
                   <Link
                       variant="contained"
-                      className="add-listing"
+                      className="add-ingredient"
                       onClick={this.toggleDialog}
                   >
                       Add
@@ -86,26 +77,24 @@ class AddListing extends Component {
                               style={{ display: 'flex', flexDirection: 'column', width: '350px' }}>
                               <TextField 
                                   id="RecipeName" 
-                                  placeholder="Recipe Name" 
+                                  placeholder="Thing 1" 
                                   value={this.state.RecipeName} 
                                   onChange={this.handleTextChange} 
                                   required />
                               <TextField 
                                   id="RecipeDescription" 
-                                  placeholder="Description" 
+                                  placeholder="Thing 2" 
                                   value={this.state.RecipeDescription} 
                                   onChange={this.handleTextChange} 
                                   required />
                               <TextField 
                                   id="RecipeDietary" 
-                                  placeholder="Allergens" 
+                                  placeholder="Thing 3" 
                                   value={this.state.RecipeDietary} 
                                   onChange={this.handleTextChange} 
                                   required />
                               <br />
                           </form>
-                          <Button variant="contained" color="primary"  onSubmit={<AddIngredient/>}>Next</Button>
-                          
                       </DialogContent>
                       
                       
@@ -116,4 +105,4 @@ class AddListing extends Component {
   }
 }
 
-export default AddListing
+export default AddIngredient
